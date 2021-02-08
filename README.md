@@ -56,13 +56,13 @@ This driver package depends on the qwiic I2C driver:
 
 Documentation
 -------------
-The SparkFun qwiic Soil Moisture Sensor module documentation is hosted at [ReadTheDocs](https://qwiic-ccs811-py.readthedocs.io/en/latest/?)
+The SparkFun qwiic Soil Moisture Sensor module documentation is hosted at [ReadTheDocs](https://qwiic-soil-moisture-sensor-py.readthedocs.io/en/latest/?)
 
 Installation
 ---------------
 ### PyPi Installation
 
-This repository is hosted on PyPi as the [sparkfun-qwiic-ccs811](https://pypi.org/project/sparkfun-qwiic-ccs811/) package. On systems that support PyPi installation via pip, this library is installed using the following commands
+This repository is hosted on PyPi as the [sparkfun-qwiic-soil-moisture-sensor](https://pypi.org/project/sparkfun-qwiic-soil-moisture-sensor/) package. On systems that support PyPi installation via pip, this library is installed using the following commands
 
 For all users (note: the user must have sudo privileges):
 ```sh
