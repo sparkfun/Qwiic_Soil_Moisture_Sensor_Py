@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-----------------------------------------------------------------------------
-# qwiic_sms_ex1.py
+# Example2-Change_I2C_Address.py
 #
 # Simple Example for the Qwiic Soil Moisture Device
 #------------------------------------------------------------------------
@@ -36,7 +36,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 # SOFTWARE.
 #==================================================================================
-# Example 1
+# Example 2
 #
 
 from __future__ import print_function
@@ -46,31 +46,45 @@ import sys
 
 def runExample():
 
-	print("\nSparkFun qwiic soil moisture sensor   Example 1\n")
+	print("\nSparkFun Qwiic Soil Moisture Sensor Example 2 - Change I2C Address\n")
 	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor()
+	
+	status = mySoilSensor.begin()
+	if status == False:
+		print ("\nStatus: ", status)
+		
+	print("\nReady!")
+	print("\nEnter a new I2C address for the Qwiic Soil Moisture Sensor to use.")
+	print("\nDon't use the 0x prefix. For instance if you wanted to")
+	print("\nchange the address to 0x5B, you would type 5B and hit enter.")
+	
+	
+	newAddress = input("\nNew Address: ")
+	newAddress = int(newAddress, 16)
 
-	if mySoilSensor.connected == False:
-		print("The Qwiic Soil Moisture Sensor device isn't connected to the system. Please check your connection", \
-			file=sys.stderr)
-		return
-
-	mySoilSensor.begin()
-
-	print("Initialized.")
-
-	while True:
-		mySoilSensor.read_results()
-		print (mySoilSensor.level)
-		mySoilSensor.LEDon()
-		time.sleep(1)
-		mySoilSensor.LEDoff()
-		time.sleep(1)
+	# Check if the user entered a valid address
+	if newAddress > 0x08 and newAddress < 0x77:
+		print("\nCharacters received and new address valid!")
+		print("\nAttempting to set Soil Moisture Sensor address...")
+		
+		mySoilSensor.changeAddress(newAddress)
+		print("\nAddress successfully changed!")
+		
+		# Check that the Soil Moisture Sensor acknowledges on new addres
+		time.sleep(0.02)
+		if mySoilSensor.begin() == False:
+			print("\nThe Qwiic Soil Moisture Sensor isn't connected to the system. Please check your connection", file=sys.stderr)
+		else:
+			print("\nSoil Moisture Sensor acknowledged on new address!")
+		
+	else:
+		print("\nAddress entered not a valid I2C address")
 
 if __name__ == '__main__':
-	try:
-		runExample()
-	except (KeyboardInterrupt, SystemExit) as exErr:
-		print("\nEnding Example 1")
-		sys.exit(0)
+    try:
+        runExample()
+    except (KeyboardInterrupt, SystemExit) as exErr:
+        print("\nEnding Example 3")
+        sys.exit(0)
 
 

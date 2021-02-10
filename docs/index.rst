@@ -15,16 +15,17 @@ Table of Contents
    self
 
 
-.. toctree:: 
+.. toctree::
    :caption: API Reference
    :maxdepth: 3
 
-   apiref 
+   apiref
 
-.. toctree:: 
+.. toctree::
    :caption: Examples
 
    ex1
+   ex2
 
 .. toctree::
    :caption: Other Links
@@ -34,7 +35,7 @@ Table of Contents
 	GitHub <https://github.com/sparkfun/Zio-Qwiic-Soil-Moisture-Sensor>
 	SparkFun qwiic <https://www.sparkfun.com/qwiic>
 
-	
+
 Indices and tables
 ==================
 

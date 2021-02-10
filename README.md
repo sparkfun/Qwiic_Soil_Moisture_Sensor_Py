@@ -17,7 +17,7 @@ Qwiic_Soil_Moisture_Sensor_Py
 	<a href="https://twitter.com/intent/follow?screen_name=sparkfun">
         	<img src="https://img.shields.io/twitter/follow/sparkfun.svg?style=social&logo=twitter"
            	 alt="follow on Twitter"></a>
-	
+
 </p>
 
 <img src="https://cdn.sparkfun.com/assets/parts/1/6/8/4/8/17731-SparkFun_Qwiic_Soil_Moisture_Sensor-01.jpg"  align="right" width=300 alt="SparkFun Qwiic Soil Moisture Sensor">
@@ -49,9 +49,9 @@ The qwiic Soil Moisture Sensor Python package current supports the following pla
 * [NVidia Jetson Nano](https://www.sparkfun.com/products/15297)
 * [Google Coral Development Board](https://www.sparkfun.com/products/15318)
 
-Dependencies 
+Dependencies
 --------------
-This driver package depends on the qwiic I2C driver: 
+This driver package depends on the qwiic I2C driver:
 [Qwiic_I2C_Py](https://github.com/sparkfun/Qwiic_I2C_Py)
 
 Documentation
@@ -92,7 +92,7 @@ pip install sparkfun_qwiic_soil_moisture_sensor-<version>.tar.gz
 
 Raspberry Pi Use
 -------------------
-For this sensor to work on the Raspberry Pi, I2C clock stretching must be enabled. 
+For this sensor to work on the Raspberry Pi, I2C clock stretching must be enabled.
 
 To do this:
 - Login as root to the target Raspberry Pi
@@ -123,7 +123,7 @@ import sys
 
 def runExample():
 
-	print("\nSparkFun qwiic soil moisture sensor   Example 1\n")
+	print("\nSparkFun qwiic soil moisture sensor Example 1\n")
 	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor()
 
 	if mySoilSensor.connected == False:

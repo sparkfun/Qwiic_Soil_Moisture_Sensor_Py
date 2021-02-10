@@ -1,7 +1,7 @@
 
 Basic Operation
 ---------------------------
-.. literalinclude:: ../examples/qwiic_sms_ex1.py
-    :caption: examples/qwiic_sms_ex1.py
+.. literalinclude:: ../examples/Example1-GetReadings.py
+    :caption: examples/Example1-GetReadings.py
     :linenos:
 
