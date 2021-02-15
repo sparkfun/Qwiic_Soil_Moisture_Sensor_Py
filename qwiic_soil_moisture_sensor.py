@@ -14,27 +14,34 @@ from __future__ import print_function, division
 
 import qwiic_i2c
 
-
 #======================================================================
-# Define the device name and I2C addresses. These are set in the class defintion
-# as class variables, making them avilable without having to create a class instance.
+# Basic setup of I2C commands and available I2C Addresses
 #
 #
 # The name of this device - note this is private
 _DEFAULT_NAME = "Qwiic Soil Moisture Sensor"
 
-# Some devices have multiple available addresses - this is a list of these addresses.
-# NOTE: The first address in this list is considered the default I2C address for the
-# device.
-_AVAILABLE_I2C_ADDRESS = [0x28, 0x29] ###LAC FIX ADDRESSES
 
-# Register addresses
+# Command addresses
 COMMAND_LED_OFF = 0x00
 COMMAND_LED_ON = 0x01
 COMMAND_CHANGE_ADDRESS = 0x03
 COMMAND_GET_VALUE = 0x05
 COMMAND_NOTHING_NEW = 0x99
 SENSOR_STATUS = 0x3F
+SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS = 0x28
+
+###############################################################################
+###############################################################################
+# Some devices have multiple available addresses - this is a list of these addresses.
+# NOTE: The first address in this list is considered the default I2C address for the
+# device.
+_FULL_ADDRESS_LIST = list(range(0x08,0x77+1))					# Full I2C Address List (excluding resrved addresses)
+_FULL_ADDRESS_LIST.remove(SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS >> 1) # Remove Default Address of Soil Moisture Sensor from list
+_AVAILABLE_I2C_ADDRESS = [SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS >> 1]	# Initialize with Default Address of Soil Moisture Sensor
+_AVAILABLE_I2C_ADDRESS.extend(_FULL_ADDRESS_LIST)				# Add Full Range of I2C Addresses
+
+
 
 class QwiicSoilMoistureSensor(object):
     """

@@ -46,10 +46,10 @@ import sys
 
 def runExample():
 
-	print("\nSparkFun qwiic soil moisture sensor   Example 1\n")
+	print("\nSparkFun Qwiic Soil Moisture Sensor Example 1\n")
 	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor()
 
-	if mySoilSensor.connected == False:
+	if mySoilSensor.is_connected == False:
 		print("The Qwiic Soil Moisture Sensor device isn't connected to the system. Please check your connection", \
 			file=sys.stderr)
 		return
