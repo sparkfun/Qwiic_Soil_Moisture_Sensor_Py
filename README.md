@@ -66,12 +66,12 @@ This repository is hosted on PyPi as the [sparkfun-qwiic-soil-moisture-sensor](h
 
 For all users (note: the user must have sudo privileges):
 ```sh
-sudo pip install sparkfun-qwiic-soil_moisture_sensor
+sudo pip install sparkfun-qwiic-soil-moisture-sensor
 ```
 For the current user:
 
 ```sh
-pip install sparkfun-qwiic-soil_moisture_sensor
+pip install sparkfun-qwiic-soil-moisture-sensor
 ```
 To install, make sure the setuptools package is installed on the system.
 
@@ -87,7 +87,7 @@ python setup.py sdist
 A package file is built and placed in a subdirectory called dist. This package file can be installed using pip.
 ```sh
 cd dist
-pip install sparkfun_qwiic_soil_moisture_sensor-<version>.tar.gz
+pip install sparkfun-qwiic-soil-moisture-sensor-<version>.tar.gz
 ```
 
 Example Use
@@ -97,8 +97,7 @@ See the examples directory for more detailed use examples.
 ```python
 from __future__ import print_function
 import qwiic_soil_moisture_sensor
-import time
-import sys
+
 
 def runExample():
 
@@ -115,11 +114,11 @@ def runExample():
 	print("Initialized.")
 
 	while True:
-		mySoilSensor.read_results()
+		mySoilSensor.read_moisture_level()
 		print (mySoilSensor.level)
-		mySoilSensor.LEDon()
+		mySoilSensor.led_on()
 		time.sleep(1)
-		mySoilSensor.LEDoff()
+		mySoilSensor.led_off()
 		time.sleep(1)
 
 if __name__ == '__main__':
