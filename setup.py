@@ -46,7 +46,7 @@ with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
 
 setup(
 
-    name='qwiic_soil_moisture_sensor',
+    name='sparkfun_qwiic_soil_moisture_sensor',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
