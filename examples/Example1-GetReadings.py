@@ -59,11 +59,11 @@ def runExample():
 	print("Initialized.")
 
 	while True:
-		mySoilSensor.read_results()
+		mySoilSensor.read_moisture_level()
 		print (mySoilSensor.level)
-		mySoilSensor.LEDon()
+		mySoilSensor.led_on()
 		time.sleep(1)
-		mySoilSensor.LEDoff()
+		mySoilSensor.led_off()
 		time.sleep(1)
 
 if __name__ == '__main__':

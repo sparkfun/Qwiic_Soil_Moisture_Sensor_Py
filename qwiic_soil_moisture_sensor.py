@@ -12,100 +12,7 @@ New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.s
 """
 from __future__ import print_function, division
 
-import time
-import math
-import sys
 import qwiic_i2c
-
-#======================================================================
-# NOTE: For Raspberry Pi
-#======================================================================
-# For this sensor to work on the Raspberry Pi, I2C clock stretching
-# must be enabled.
-#
-# To do this:
-#   - Login as root to the target Raspberry Pi
-#   - Open the file /boot/config.txt in your favorite editor (vi, nano ...etc)
-#   - Scroll down until the bloct that contains the following is found:
-#           dtparam=i2c_arm=on
-#           dtparam=i2s=on
-#           dtparam=spi=on
-#   - Add the following line:
-#           # Enable I2C clock stretching
-#           dtparam=i2c_arm_baudrate=10000
-#
-#   - Save the file
-#   - Reboot the raspberry pi
-#======================================================================
-def __checkIsOnRPi():
-
-    # Are we on a Pi? First Linux?
-
-    if sys.platform not in ('linux', 'linux2'):
-        return False
-
-    # we can find out if we are on a RPI by looking at the contents
-    # of /proc/device-tree/compatable
-
-    try:
-        with open('/proc/device-tree/compatible', 'r') as fCompat:
-
-            systype = fCompat.read()
-
-            return systype.find('raspberrypi') != -1
-    except IOError:
-        return False
-
-# check if stretching is set if on a rpi
-#
-def _checkForRPiI2CClockStretch():
-
-    #are we on a rpi?
-    if not __checkIsOnRPi():
-        return
-
-    # read the boot config file and see if the clock stretch param is set
-    try:
-        with open('/boot/config.txt') as fConfig:
-
-            strConfig = fConfig.read()
-            for line in strConfig.split('\n'):
-                if line.find('i2c_arm_baudrate') == -1:
-                    continue
-
-                # start with a comment?
-                if line.strip().startswith('#'):
-                    break
-
-                # is the value less <= 10000
-                params = line.split('=')
-                if int(params[-1]) <= 10000:
-                    # Stretching is enabled and set correctly.
-                    return
-
-                break
-    except IOError:
-        pass
-
-    # if we are here, then we are on a Raspberry Pi and Clock Stretching isn't
-    # set correctly.
-    # Print out a message!
-
-    print("""
-============================================================================
- NOTE:
-
- For the Soil Moisture Sensor to work on the Raspberry Pi, I2C clock stretching
- must be enabled.
-
- The following line must be added to the file /boot/config.txt
-
-    dtparam=i2c_arm_baudrate=10000
-
- For more information, see the note at:
-          https://github.com/sparkfun/Qwiic_CCS811_Py
-============================================================================
-        """)
 
 
 #======================================================================
@@ -119,7 +26,7 @@ _DEFAULT_NAME = "Qwiic Soil Moisture Sensor"
 # Some devices have multiple available addresses - this is a list of these addresses.
 # NOTE: The first address in this list is considered the default I2C address for the
 # device.
-_AVAILABLE_I2C_ADDRESS = [0x28, 0x29]
+_AVAILABLE_I2C_ADDRESS = [0x28, 0x29] ###LAC FIX ADDRESSES
 
 # Register addresses
 COMMAND_LED_OFF = 0x00
@@ -197,7 +104,7 @@ class QwiicSoilMoistureSensor(object):
     # ****************************************************************************#
     # Updates the moisture level data
     # Returns nothing
-    def read_results(self):
+    def read_moisture_level(self):
         """
             Reads the results from the sensor and stores internally
             :rtype: integer
@@ -224,10 +131,10 @@ class QwiicSoilMoistureSensor(object):
 
 
     # --------------------------------------------------------------
-    # LEDoff()
+    # led_off()
     #
     # Turn the onboard LED off
-    def LEDoff(self):
+    def led_off(self):
         """
             Turn off the onboard LED.
             :return: Nothing
@@ -236,10 +143,10 @@ class QwiicSoilMoistureSensor(object):
         self._i2c.writeCommand(self.address, 0x00)
     
     # --------------------------------------------------------------
-    # LEDon
+    # led_on
     #
     # Turns the onboard LED on
-    def LEDon(self):
+    def led_on(self):
         """
             Turn on the onboard LED.
             :return: Nothing
@@ -249,11 +156,11 @@ class QwiicSoilMoistureSensor(object):
 
 
     # ----------------------------------------------
-    # changeAddress(newAddress)
+    # change_address(newAddress)
     #
     # This function changes the I2C address of the Qwiic Soil Moisture Sensor. The address
     # is written to the memory location in EEPROM that determines its address.
-    def changeAddress(self, newAddress):
+    def change_address(self, newAddress):
         """
         Changes the I2C address of the Qwiic Soil Moisture Sensor reader
             :param newAddress: the new address to set the Soil Moisture Sensor reader to

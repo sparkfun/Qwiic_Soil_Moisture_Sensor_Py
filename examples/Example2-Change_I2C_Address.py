@@ -67,7 +67,7 @@ def runExample():
 		print("\nCharacters received and new address valid!")
 		print("\nAttempting to set Soil Moisture Sensor address...")
 		
-		mySoilSensor.changeAddress(newAddress)
+		mySoilSensor.change_address(newAddress)
 		print("\nAddress successfully changed!")
 		
 		# Check that the Soil Moisture Sensor acknowledges on new addres
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     try:
         runExample()
     except (KeyboardInterrupt, SystemExit) as exErr:
-        print("\nEnding Example 3")
+        print("\nEnding Example 2")
         sys.exit(0)
 
 

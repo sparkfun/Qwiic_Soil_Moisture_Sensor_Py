@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'sparkfun_qwiic_soil_moisture_sensor'
-copyright = '2019, SparkFun Electronics'
+copyright = '2021, SparkFun Electronics'
 author = 'SparkFun Electronics'
 
 # The full version, including alpha/beta/rc tags
@@ -34,7 +34,7 @@ extensions = [
 	'sphinx.ext.autodoc',
 	'sphinx.ext.intersphinx',
 	'sphinx.ext.viewcode',
-	'm2r'
+	'm2r2'
 	]
 
 source_suffix = ['.rst', '.md']
