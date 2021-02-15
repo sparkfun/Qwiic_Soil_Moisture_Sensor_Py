@@ -7,12 +7,12 @@ Qwiic_Soil_Moisture_Sensor_Py
 </p>
 <p align="center">
 	<a href="https://pypi.org/project/sparkfun-qwiic-soil-moisture-sensor/" alt="Package">
-		<img src="https://img.shields.io/pypi/pyversions/sparkfun_qwiic_ccs811.svg" /></a>
-	<a href="https://github.com/sparkfun/Zio-Qwiic-Soil-Moisture-Sensor/issues" alt="Issues">
+		<img src="https://img.shields.io/pypi/pyversions/sparkfun_qwiic_soil_moisture_sensor.svg" /></a>
+	<a href="https://github.com/sparkfun/Qwiic_Soil_Moisture_Sensor_Py/issues" alt="Issues">
 		<img src="https://img.shields.io/github/issues/sparkfun/Qwiic_Soil_Moisture_Sensor_Py.svg" /></a>
-	<a href="https://qwiic-ccs811-py.readthedocs.io/en/latest/?" alt="Documentation">
-		<img src="https://readthedocs.org/projects/qwiic-ccs811-py/badge/?version=latest&style=flat" /></a>
-	<a href="https://github.com/sparkfun/Zio-Qwiic-Soil-Moisture-Sensor/blob/master/LICENSE" alt="License">
+	<a href="https://qwiic-soil-moisture-sensor-py.readthedocs.io/en/latest/?" alt="Documentation">
+		<img src="https://readthedocs.org/projects/qwiic-soil-moisture-sensor-py/badge/?version=latest&style=flat" /></a>
+	<a href="https://github.com/sparkfun/Qwiic_Soil_Moisture_Sensor_Py/blob/master/LICENSE" alt="License">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 	<a href="https://twitter.com/intent/follow?screen_name=sparkfun">
         	<img src="https://img.shields.io/twitter/follow/sparkfun.svg?style=social&logo=twitter"
@@ -89,27 +89,6 @@ A package file is built and placed in a subdirectory called dist. This package f
 cd dist
 pip install sparkfun_qwiic_soil_moisture_sensor-<version>.tar.gz
 ```
-
-Raspberry Pi Use
--------------------
-For this sensor to work on the Raspberry Pi, I2C clock stretching must be enabled.
-
-To do this:
-- Login as root to the target Raspberry Pi
-- Open the file /boot/config.txt in your favorite editor (vi, nano ...etc)
-- Scroll down until the block that contains the following is found:
-```ini
-dtparam=i2c_arm=on
-dtparam=i2s=on
-dtparam=spi=on
-```
-- Add the following line:
-```ini
-# Enable I2C clock stretching
-dtparam=i2c_arm_baudrate=10000
-```
-- Save the file
-- Reboot the raspberry pi
 
 Example Use
  -------------
