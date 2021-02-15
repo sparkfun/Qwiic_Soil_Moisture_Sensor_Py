@@ -7,12 +7,12 @@ Qwiic_Soil_Moisture_Sensor_Py
 </p>
 <p align="center">
 	<a href="https://pypi.org/project/sparkfun-qwiic-soil-moisture-sensor/" alt="Package">
-		<img src="https://img.shields.io/pypi/pyversions/sparkfun_qwiic_ccs811.svg" /></a>
-	<a href="https://github.com/sparkfun/Zio-Qwiic-Soil-Moisture-Sensor/issues" alt="Issues">
+		<img src="https://img.shields.io/pypi/pyversions/sparkfun_qwiic_soil_moisture_sensor.svg" /></a>
+	<a href="https://github.com/sparkfun/Qwiic_Soil_Moisture_Sensor_Py/issues" alt="Issues">
 		<img src="https://img.shields.io/github/issues/sparkfun/Qwiic_Soil_Moisture_Sensor_Py.svg" /></a>
-	<a href="https://qwiic-ccs811-py.readthedocs.io/en/latest/?" alt="Documentation">
-		<img src="https://readthedocs.org/projects/qwiic-ccs811-py/badge/?version=latest&style=flat" /></a>
-	<a href="https://github.com/sparkfun/Zio-Qwiic-Soil-Moisture-Sensor/blob/master/LICENSE" alt="License">
+	<a href="https://qwiic-soil-moisture-sensor-py.readthedocs.io/en/latest/?" alt="Documentation">
+		<img src="https://readthedocs.org/projects/qwiic-soil-moisture-sensor-py/badge/?version=latest&style=flat" /></a>
+	<a href="https://github.com/sparkfun/Qwiic_Soil_Moisture_Sensor_Py/blob/master/LICENSE" alt="License">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
 	<a href="https://twitter.com/intent/follow?screen_name=sparkfun">
         	<img src="https://img.shields.io/twitter/follow/sparkfun.svg?style=social&logo=twitter"
@@ -30,9 +30,6 @@ This python package is a port of the existing [SparkFun Soil Moisture Sensor Ard
 This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
 
 New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).
-
-### :warning: **Using this sensor on a Raspberry Pi**? :warning:
-Your system might need modification. See this [note](#raspberry-pi-use).
 
 ## Contents
 
@@ -66,12 +63,12 @@ This repository is hosted on PyPi as the [sparkfun-qwiic-soil-moisture-sensor](h
 
 For all users (note: the user must have sudo privileges):
 ```sh
-sudo pip install sparkfun-qwiic-soil_moisture_sensor
+sudo pip install sparkfun-qwiic-soil-moisture-sensor
 ```
 For the current user:
 
 ```sh
-pip install sparkfun-qwiic-soil_moisture_sensor
+pip install sparkfun-qwiic-soil-moisture-sensor
 ```
 To install, make sure the setuptools package is installed on the system.
 
@@ -87,29 +84,8 @@ python setup.py sdist
 A package file is built and placed in a subdirectory called dist. This package file can be installed using pip.
 ```sh
 cd dist
-pip install sparkfun_qwiic_soil_moisture_sensor-<version>.tar.gz
+pip install sparkfun-qwiic-soil-moisture-sensor-<version>.tar.gz
 ```
-
-Raspberry Pi Use
--------------------
-For this sensor to work on the Raspberry Pi, I2C clock stretching must be enabled.
-
-To do this:
-- Login as root to the target Raspberry Pi
-- Open the file /boot/config.txt in your favorite editor (vi, nano ...etc)
-- Scroll down until the block that contains the following is found:
-```ini
-dtparam=i2c_arm=on
-dtparam=i2s=on
-dtparam=spi=on
-```
-- Add the following line:
-```ini
-# Enable I2C clock stretching
-dtparam=i2c_arm_baudrate=10000
-```
-- Save the file
-- Reboot the raspberry pi
 
 Example Use
  -------------
@@ -118,8 +94,7 @@ See the examples directory for more detailed use examples.
 ```python
 from __future__ import print_function
 import qwiic_soil_moisture_sensor
-import time
-import sys
+
 
 def runExample():
 
@@ -136,11 +111,11 @@ def runExample():
 	print("Initialized.")
 
 	while True:
-		mySoilSensor.read_results()
+		mySoilSensor.read_moisture_level()
 		print (mySoilSensor.level)
-		mySoilSensor.LEDon()
+		mySoilSensor.led_on()
 		time.sleep(1)
-		mySoilSensor.LEDoff()
+		mySoilSensor.led_off()
 		time.sleep(1)
 
 if __name__ == '__main__':
