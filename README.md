@@ -6,8 +6,8 @@ Qwiic_Soil_Moisture_Sensor_Py
    <img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png"  width=240>   
 </p>
 <p align="center">
-	<a href="https://pypi.org/project/qwiic-soil-moisture-sensor/" alt="Package">
-		<img src="https://img.shields.io/pypi/pyversions/qwiic_soil_moisture_sensor.svg" /></a>
+	<a href="https://pypi.org/project/sparkfun-qwiic-soil-moisture-sensor/" alt="Package">
+		<img src="https://img.shields.io/pypi/pyversions/sparkfun-qwiic_soil_moisture_sensor.svg" /></a>
 	<a href="https://github.com/sparkfun/Qwiic_Soil_Moisture_Sensor_Py/issues" alt="Issues">
 		<img src="https://img.shields.io/github/issues/sparkfun/Qwiic_Soil_Moisture_Sensor_Py.svg" /></a>
 	<a href="https://qwiic-soil-moisture-sensor-py.readthedocs.io/en/latest/?" alt="Documentation">
