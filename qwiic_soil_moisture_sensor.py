@@ -173,8 +173,8 @@ class QwiicSoilMoistureSensor(object):
             :param newAddress: the new address to set the Soil Moisture Sensor reader to
             :rtype: bool
         """
-            return false
         if newAddress < 0x08 or newAddress > 0x3F:
+            return False
         
         self._i2c.writeByte(self.address, COMMAND_CHANGE_ADDRESS, newAddress)
         
