@@ -44,10 +44,13 @@ import qwiic_soil_moisture_sensor
 import time
 import sys
 
+# If you've already changed the I2C address, change this to the current address!
+currentAddress = qwiic_soil_moisture_sensor.SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS
+
 def runExample():
 
 	print("\nSparkFun Qwiic Soil Moisture Sensor Example 2 - Change I2C Address\n")
-	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor()
+	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor(currentAddress)
 	
 	if mySoilSensor.is_connected() == False:
 		print("The Qwiic Soil Moisture Sensor device isn't connected to the system. Please check your connection", \
@@ -56,17 +59,17 @@ def runExample():
 
 	mySoilSensor.begin()
 		
-	print("\nReady!")
-	print("\nEnter a new I2C address for the Qwiic Soil Moisture Sensor to use.")
-	print("\nDon't use the 0x prefix. For instance if you wanted to")
-	print("\nchange the address to 0x5B, you would type 5B and hit enter.")
-	
+	print("Ready!")
+	print("Enter a new I2C address for the Qwiic Soil Moisture Sensor to use.")
+	print("Any address from 0x08 to 0x3F works.")
+	print("Don't use the 0x prefix. For instance if you wanted to")
+	print("change the address to 0x3B, you would type 3B and hit enter.")
 	
 	newAddress = input("\nNew Address: ")
 	newAddress = int(newAddress, 16)
 
 	# Check if the user entered a valid address
-	if newAddress > 0x08 and newAddress < 0x77:
+	if newAddress >= 0x08 and newAddress <= 0x3F:
 		print("\nCharacters received and new address valid!")
 		print("\nAttempting to set Soil Moisture Sensor address...")
 		
