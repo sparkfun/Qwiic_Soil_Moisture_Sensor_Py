@@ -49,9 +49,12 @@ def runExample():
 	print("\nSparkFun Qwiic Soil Moisture Sensor Example 2 - Change I2C Address\n")
 	mySoilSensor = qwiic_soil_moisture_sensor.QwiicSoilMoistureSensor()
 	
-	status = mySoilSensor.begin()
-	if status == False:
-		print ("\nStatus: ", status)
+	if mySoilSensor.is_connected() == False:
+		print("The Qwiic Soil Moisture Sensor device isn't connected to the system. Please check your connection", \
+			file=sys.stderr)
+		return
+
+	mySoilSensor.begin()
 		
 	print("\nReady!")
 	print("\nEnter a new I2C address for the Qwiic Soil Moisture Sensor to use.")
