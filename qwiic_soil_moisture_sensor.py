@@ -37,8 +37,8 @@ SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS = 0x28
 # NOTE: The first address in this list is considered the default I2C address for the
 # device.
 _FULL_ADDRESS_LIST = list(range(0x08,0x77+1))					# Full I2C Address List (excluding resrved addresses)
-_FULL_ADDRESS_LIST.remove(SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS >> 1) # Remove Default Address of Soil Moisture Sensor from list
-_AVAILABLE_I2C_ADDRESS = [SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS >> 1]	# Initialize with Default Address of Soil Moisture Sensor
+_FULL_ADDRESS_LIST.remove(SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS) # Remove Default Address of Soil Moisture Sensor from list
+_AVAILABLE_I2C_ADDRESS = [SOIL_MOISTURE_SENSOR_DEFAULT_ADDRESS]	# Initialize with Default Address of Soil Moisture Sensor
 _AVAILABLE_I2C_ADDRESS.extend(_FULL_ADDRESS_LIST)				# Add Full Range of I2C Addresses
 
 
