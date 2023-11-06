@@ -10,7 +10,6 @@ This package can be used in conjunction with the overall [SparkFun qwiic Python 
 New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).
 
 """
-from __future__ import print_function, division
 
 import qwiic_i2c
 

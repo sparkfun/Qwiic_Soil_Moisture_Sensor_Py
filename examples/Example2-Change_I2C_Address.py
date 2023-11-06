@@ -39,7 +39,6 @@
 # Example 2
 #
 
-from __future__ import print_function
 import qwiic_soil_moisture_sensor
 import time
 import sys
