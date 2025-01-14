@@ -1,4 +1,4 @@
-"""
+"""!
 qwiic_soil_moisture_sensor
 ============
 Python module for the [SparkFun Qwiic Soil Moisture Sensor](https://www.sparkfun.com/products/17731)
@@ -8,7 +8,6 @@ This python package is a port of the existing [SparkFun Soil Moisture Sensor Ard
 This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
 
 New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).
-
 """
 
 import qwiic_i2c
@@ -43,15 +42,15 @@ _AVAILABLE_I2C_ADDRESS.extend(_FULL_ADDRESS_LIST)				# Add Full Range of I2C Add
 
 
 class QwiicSoilMoistureSensor(object):
-    """
+    """!
     QwiicSoilMoistureSensor
 
-        :param address: The I2C address to use for the device.
+    @param address: The I2C address to use for the device.
                         If not provided, the default address is used.
-        :param i2c_driver: An existing i2c driver object. If not provided
+    @param i2c_driver: An existing i2c driver object. If not provided
                         a driver object is created.
-        :return: The Soil Moisture Sensor device object.
-        :rtype: Object
+
+    @return **Object** The Soil Moisture Sensor device object.
     """
     device_name         = _DEFAULT_NAME
     available_addresses = _AVAILABLE_I2C_ADDRESS
@@ -80,10 +79,10 @@ class QwiicSoilMoistureSensor(object):
     # Is an actual board connected to our system?
 
     def is_connected(self):
-        """
-            Determine if a Soil MoistureSensor device is conntected to the system..
-            :return: True if the device is connected, otherwise False.
-            :rtype: bool
+        """!
+        Determine if a Soil MoistureSensor device is conntected to the system..
+
+        @return **bool** True if the device is connected, otherwise False.
         """        
         return self._i2c.isDeviceConnected(self.address)
 
@@ -94,10 +93,10 @@ class QwiicSoilMoistureSensor(object):
     #
     # Initialize the system/validate the board.
     def begin(self):
-        """
-            Initialize the operation of the Soil Moisture Sensor module
-            :return: Returns true of the initialization was successful, otherwise False.
-            :rtype: bool
+        """!
+        Initialize the operation of the Soil Moisture Sensor module
+
+        @return **bool** Returns true of the initialization was successful, otherwise False.
         """
         
         # Set variables
@@ -114,10 +113,8 @@ class QwiicSoilMoistureSensor(object):
     # Updates the moisture level data
     # Returns nothing
     def read_moisture_level(self):
-        """
-            Reads the results from the sensor and stores internally
-            :rtype: integer
-
+        """!
+        Reads the results from the sensor and stores internally
         """
         
         data = self._i2c.readBlock(self.address, COMMAND_GET_VALUE, 2)
@@ -126,12 +123,10 @@ class QwiicSoilMoistureSensor(object):
     #----------------------------------------------------
     # Checks to see if error bit is set
     def check_status_error(self):
-        """
-            Returns  if the Error bit on the sensor is set.
+        """!
+        Returns  if the Error bit on the sensor is set.
 
-            :return: value of Error bit
-            :rtype: integer
-
+        @return **integer** value of Error bit
         """
         # return the status bit
         value = self._i2c.readByte(self.address, SENSOR_STATUS)
@@ -144,10 +139,10 @@ class QwiicSoilMoistureSensor(object):
     #
     # Turn the onboard LED off
     def led_off(self):
-        """
-            Turn off the onboard LED.
-            :return: Nothing
-            :rtype: void
+        """!
+        Turn off the onboard LED.
+
+        @return **void** Nothing
         """
         self._i2c.writeCommand(self.address, 0x00)
     
@@ -156,10 +151,10 @@ class QwiicSoilMoistureSensor(object):
     #
     # Turns the onboard LED on
     def led_on(self):
-        """
-            Turn on the onboard LED.
-            :return: Nothing
-            :rtype: void
+        """!
+        Turn on the onboard LED.
+
+        @return **void** Nothing
         """
         self._i2c.writeCommand(self.address, 0x01)
 
@@ -170,10 +165,12 @@ class QwiicSoilMoistureSensor(object):
     # This function changes the I2C address of the Qwiic Soil Moisture Sensor. The address
     # is written to the memory location in EEPROM that determines its address.
     def change_address(self, newAddress):
-        """
+        """!
         Changes the I2C address of the Qwiic Soil Moisture Sensor reader
-            :param newAddress: the new address to set the Soil Moisture Sensor reader to
-            :rtype: bool
+
+        @param newAddress: the new address to set the Soil Moisture Sensor reader to
+        
+        @return **bool** False if the address is out of range
         """
         if newAddress < 0x08 or newAddress > 0x3F:
             return False
